@@ -1,0 +1,28 @@
+// backend/chatNotify.jsw
+// Fires when a member sends a chat message — notifies Yuvansh on WhatsApp
+
+import { fetch } from 'wix-fetch';
+
+// Base44 backend webhook — receives message and triggers WhatsApp notification
+const WEBHOOK_URL = 'https://yuvansh-bot-089fa2bc.base44.app/functions/yuvatubeChatWebhook';
+
+export async function notifyYuvansh(senderId, senderName, message, accessTier) {
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        senderId,
+        senderName,
+        message,
+        accessTier,
+        timestamp: new Date().toISOString()
+      })
+    });
+
+    const result = await response.json();
+    console.log('Yuvansh notified:', result);
+  } catch (err) {
+    console.error('Failed to notify Yuvansh:', err);
+  }
+}
