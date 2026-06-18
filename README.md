@@ -50,3 +50,30 @@ wix-velo/
 
 ---
 Built with ⚡ by Yuvansh
+
+## 💬 Members-Only Chat
+
+Exclusive chat feature — only available to **Y1 Access**, **Pro**, and **Premium** members.
+
+| Feature | Y1 | Pro | Premium |
+|---|---|---|---|
+| Watch Videos | ✅ | ✅ | ✅ |
+| Comment | ✅ | ✅ | ✅ |
+| Upload Videos | ✅ | ✅ | ✅ |
+| Chat with Yuvansh | ✅ | ✅ | ✅ |
+
+### Setting Up the Chat CMS Collection
+
+In your Wix Editor, enable **Wix CMS** and create a `ChatMessages` collection with these fields:
+
+| Field Key | Display Name | Type |
+|---|---|---|
+| `senderId` | Sender ID | Text |
+| `senderName` | Sender Name | Text |
+| `message` | Message | Text |
+| `accessTier` | Access Tier | Text |
+| `isFromYuvansh` | Is From Yuvansh | Text (`"true"` / `"false"`) |
+| `isRead` | Is Read | Text |
+| `replyTo` | Reply To | Text |
+
+> **Admin tip:** To reply to a member, insert a record with `isFromYuvansh = "true"` and `replyTo = <their memberId>`.
